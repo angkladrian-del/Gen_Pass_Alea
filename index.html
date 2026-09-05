@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pass_Alea &#8211; Generador de Contrase&#241;as</title>
+  <meta name="description" content="Generador de contrase&#241;as aleatorias seguras con mezcla de may&#250;sculas, min&#250;sculas, n&#250;meros y s&#237;mbolos especiales." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<main class="card" role="main">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo" aria-hidden="true">&#128272;</div>
+    <h1>Pass_Alea</h1>
+    <p class="subtitle">Generador de contrase&#241;as seguras &amp; aleatorias</p>
+  </div>
+
+  <!-- Password output -->
+  <div class="pass-wrap" id="passWrap">
+    <div class="pass-display"
+         id="passDisplay"
+         role="textbox"
+         aria-label="Contrase&#241;a generada"
+         aria-readonly="true"
+         tabindex="0">
+      <span class="pass-text" id="passText">&#8212; Pulsa Generar &#8212;</span>
+    </div>
+    <button class="btn-copy"
+            id="btnCopy"
+            title="Copiar contrase&#241;a"
+            aria-label="Copiar contrase&#241;a al portapapeles">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true">
+        <rect x="9" y="2" width="10" height="13" rx="2"/>
+        <path d="M5 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-1"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Strength indicator -->
+  <div class="strength-row" aria-label="Indicador de fortaleza">
+    <div class="strength-bars" id="strengthBars">
+      <div class="bar" id="b1"></div>
+      <div class="bar" id="b2"></div>
+      <div class="bar" id="b3"></div>
+      <div class="bar" id="b4"></div>
+    </div>
+    <span class="strength-label" id="strengthLabel">&#8212;</span>
+  </div>
+
+  <!-- Length slider -->
+  <p class="section-title">Longitud de la contrase&#241;a</p>
+  <div class="slider-row">
+    <div class="slider-wrap">
+      <input type="range"
+             id="lengthSlider"
+             min="6" max="32" value="16"
+             aria-label="Longitud de la contrase&#241;a" />
+    </div>
+    <span class="length-badge" id="lengthBadge" aria-live="polite">16</span>
+  </div>
+
+  <!-- Character-type toggles -->
+  <p class="section-title">Incluir en la contrase&#241;a</p>
+  <div class="toggles">
+    <label class="toggle-item active" id="lbl-upper">
+      <input type="checkbox" id="chkUpper" checked />
+      <span class="toggle-icon">&#128288;</span>
+      <span class="toggle-text">May&#250;sculas</span>
+      <span class="toggle-dot"></span>
+    </label>
+    <label class="toggle-item active" id="lbl-lower">
+      <input type="checkbox" id="chkLower" checked />
+      <span class="toggle-icon">&#128289;</span>
+      <span class="toggle-text">Min&#250;sculas</span>
+      <span class="toggle-dot"></span>
+    </label>
+    <label class="toggle-item active" id="lbl-numbers">
+      <input type="checkbox" id="chkNumbers" checked />
+      <span class="toggle-icon">&#128290;</span>
+      <span class="toggle-text">N&#250;meros</span>
+      <span class="toggle-dot"></span>
+    </label>
+    <label class="toggle-item active" id="lbl-symbols">
+      <input type="checkbox" id="chkSymbols" checked />
+      <span class="toggle-icon">&#10055;</span>
+      <span class="toggle-text">S&#237;mbolos</span>
+      <span class="toggle-dot"></span>
+    </label>
+  </div>
+
+  <!-- Generate button -->
+  <button class="btn-generate"
+          id="btnGenerate"
+          aria-label="Generar nueva contrase&#241;a">
+    &#10024; Generar Contrase&#241;a
+  </button>
+
+  <!-- Security notice -->
+  <p class="notice">
+    Regla de seguridad: <span>no se repite el mismo tipo</span> de car&#225;cter
+    en posiciones consecutivas.<br />
+    Ej. v&#225;lido: <code style="color:#a78bfa;">Va8p/rl1v</code>
+    &#8212; Inv&#225;lido: <code style="color:#ef4444;">A89&amp;Vv</code>
+  </p>
+
+</main>
+
+<!-- Toast notification -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  &#10003; &#161;Copiado al portapapeles!
+</div>
+
+<!-- App logic -->
+<script src="js/app.js"></script>
+
+</body>
+</html>
